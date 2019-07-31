@@ -1,0 +1,21 @@
+timezone: Asia/Tokyo
+
+# schedule:
+  # daily>: 08:00:00
+  # cron>: * * * * *
+
+_export:
+  # 必要な環境変数やpathを記載する
+  PATH: '~/.pyenv/shims:~/.pyenv/bin:~/bin:~/.local/bin:/usr/bin:/usr/bin/:/usr/sbin:/usr/local/bin:/usr/local/sbin:/bin:/sbin'
+
++step1:
+  sh> echo "Hello"
+  # sh>: td query -d db_levrs_haken -w -T presto -f json -q queries/tmp.sql -o data/tmp.json
+  # -d データベースを指定
+  # -w コマンドライン上でjobの終了を待機する (なくても良い)
+  # -f フォーマットしてい table, json, csv, tsvあたり
+  # -q クエリファイルを指定
+  # -o エクスポート先を指定
+
+# +step2:
+  # sh>: python tasks/鮮度グリッド送る処理.py
