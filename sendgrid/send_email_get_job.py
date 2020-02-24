@@ -37,42 +37,24 @@ def main(office_id=1,
               '【DF URL】',
               'https://df.lvgs.jp/office/' + str(office_id) + '/show/',]
     body = '\n'.join(body_l)
-    message = Mail(from_email=from_email,
-                   to_emails=to_email,
-                   subject=subject,
-                   plain_text_content=body)
 
     data = {
-            "personalizations": [
-              {
-                "to": [
-                  {
-                    "email": to_email
-                  }
-                ],
-                "subject": subject
-              }
-            ],
-            "from": {
-              "email": from_email
-            },
-            "content": [ { "type": "text/plain",
-                           "value": body }],
+            "personalizations": [{
+                "to": [{
+                    "email": to_email}],
+                "subject": subject}],
+            "from": {"email": from_email},
+            "content": [{"type": "text/plain",
+                           "value": body}],
             "tracking_settings": {
                 "click_tracking": {
                     "enable": False,
-                    "enable_text": False
-                },
-            }
+                    "enable_text": False},
+                }
         }
 
     try:
         sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
-        response = sg.send(message)
-        print(response.status_code)
-        print(response.body)
-        print(response.headers)
-
         response = sg.client.mail.send.post(request_body=data)
         print(response.status_code)
         print(response.body)
