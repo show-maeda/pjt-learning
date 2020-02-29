@@ -2,6 +2,9 @@ import os
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
+SENDGRID_API_KEY = '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'
+
+
 def main(office_id=1,
          office_name='施設名',
          owner_name='法人名',
@@ -9,8 +12,8 @@ def main(office_id=1,
          address='住所',
          memo='メモ',
          row=1):
-    from_email = 'shota.maeda@leverages.jp'
-    to_email = 'shota.maeda@leverages.jp'
+    from_email = 's.maeda.fukui@gmail.com'
+    to_email = 's.maeda.fukui@gmail.com'
     subject = '【法人問い合わせ】'+ owner_name + ' ' + office_name + ' / (求人)' + employment_type
     body_l = ['きらケア CSサポートグループ 様',
               '',
@@ -54,7 +57,7 @@ def main(office_id=1,
         }
 
     try:
-        sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+        sg = SendGridAPIClient(SENDGRID_API_KEY)
         response = sg.client.mail.send.post(request_body=data)
         print(response.status_code)
         print(response.body)
