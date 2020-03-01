@@ -13,7 +13,7 @@ from sendgrid.helpers.mail import Mail
 
 if __name__ == '__main__':
   message = Mail(
-      from_email='from_email@example.com',
+      from_email='s.maeda.kobe@gmail.com',
       to_emails='s.maeda.kobe@gmail.com',
       subject='Sending with Twilio SendGrid is Fun',
       html_content='<strong>and easy to do anywhere, even with Python</strong>')

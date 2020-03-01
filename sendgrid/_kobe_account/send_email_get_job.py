@@ -16,8 +16,9 @@ def main(office_id=1,
          address='住所',
          memo='メモ',
          row=1):
-    from_email = 's.maeda.fukui@gmail.com'
-    to_email = 's.maeda.fukui@gmail.com'
+    from_email = 's.maeda.kobe@gmail.com'
+    # from_email = 'shota.maeda@leverages.jp'
+    to_email = 'shota.maeda@leverages.jp'
     subject = '【法人問い合わせ】'+ owner_name + ' ' + office_name + ' / (求人)' + employment_type
     body_l = ['きらケア CSサポートグループ 様',
               '',
@@ -48,16 +49,21 @@ def main(office_id=1,
     data = {
             "personalizations": [{
                 "to": [{
-                    "email": to_email}],
-                "subject": subject}],
+                    "email": to_email
+                }],
+                "subject": subject
+            }],
             "from": {"email": from_email},
-            "content": [{"type": "text/plain",
-                           "value": body}],
+            "content": [{
+                "type": "text/plain",
+                "value": body
+            }],
             "tracking_settings": {
                 "click_tracking": {
                     "enable": False,
-                    "enable_text": False},
-                }
+                    "enable_text": False
+                },
+            }
         }
 
     try:
